@@ -1,12 +1,29 @@
 #include <stdio.h>
 
 int main(void) {
-    char frase[] = "i topi non avevano nipoti";
-    char *end = (frase + sizeof(frase) - 1); //-1!!!
-    //avrei potuto fare:
-    //while(*end != '\0'){
-    // end++;
-    char *start = frase;
+    char stringa[] = "i topi non avevano nipoti";
+    char *inizio = stringa;
+    char *fine = stringa;
+    while (*fine != '\0') {
+        fine++;
+    }
+    fine--;
 
-    while (start <= end){
-        if (*start)
+    while (inizio <= fine) {
+        while (*inizio == ' ') {
+            inizio++;
+        }
+        while (*fine == ' ') {
+            fine--;
+        }
+        if (*inizio != *fine) {
+            printf("Frase non palindroma");
+            return 0;
+        }
+        inizio++;
+        fine--;
+    }
+    printf("Frase palindroma");
+
+    return 0;
+}
